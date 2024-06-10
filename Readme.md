@@ -1,0 +1,7 @@
+jo likhane ka man hain wo likh dalo.
+
+chai aur backend
+
+[model] (https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbEhpd095U2l4eVhaaURCUkw5eUxFNGhLZElpUXxBQ3Jtc0tub2hxTlNaN2VQUlI1ZEJuZVNvNkVROXVPU1Bpc0xsUjFSVXNmTXV0YXhkOTN0S0FJMHpkakpOaVI0SlNrTGxTTENKdkxhc1RybmJaZW1MTUZUU0hRbW1CWlFsZ24zOGJPcUZLOS1OV1BqNzRvZ1ZfQQ&q=https%3A%2F%2Fapp.eraser.io%2Fworkspace%2FYtPqZ1VogxGy1jzIDkzj%3Forigin%3Dshare&v=9B4CvtzXRpc)
+
+[model link](https://www.google.com/search?q=just+the+two+of+us+lyrics&rlz=1C1GCEA_enIN1097IN1097&oq=&gs_lcrp=EgZjaHJvbWUqCQgBECMYJxjqAjIJCAAQIxgnGOoCMgkIARAjGCcY6gIyCQgCECMYJxjqAjIJCAMQIxgnGOoCMgkIBBAjGCcY6gIyCQgFECMYJxjqAjIJCAYQIxgnGOoCMgkIBxAjGCcY6gLSAQwzNDE0NTM3MWowajeoAgiwAgE&sourceid=chrome&ie=UTF-8)
