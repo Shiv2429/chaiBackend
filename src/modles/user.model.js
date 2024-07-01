@@ -1,10 +1,10 @@
-import { Schema } from "mongoose"
 import mongoose from "mongoose"
+import { Schema } from "mongoose"
 import bcrypt from "bcrypt"
 
 
 
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
@@ -34,7 +34,7 @@ const userSchema = new Schema({
     },
     watchHistory: [
         {
-            type: Schema.Types.objectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: "Video",
         }
     ],
@@ -52,7 +52,7 @@ const userSchema = new Schema({
 //pre hook
 userSchema.pre("save", async function (next) {
     if(!this.isModified("password"))  return next(); 
-    this.password = awaitbcrypt.hash(this.password, 10)
+    this.password = await bcrypt.hash(this.password, 10)
     next() 
 })
 

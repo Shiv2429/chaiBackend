@@ -19,7 +19,8 @@ const registerUser = asyncHandler( async (req, res) => {
     // check for user creation
     // return response
 
-    const {username, email, fullname, password} = req.body;;
+    const {username, email, fullname, password} = req.body;
+    // console.log(req.body)
     console.log("email", email)
     console.log("password", password)
     console.log("username", username)
@@ -37,7 +38,7 @@ const registerUser = asyncHandler( async (req, res) => {
         throw new ApiError(400, "all field is required")
     }
     
-    const existedUser = User.findOne({
+    const existedUser =await User.findOne({
         $or:[{email}, {username}]
     })
 
@@ -46,16 +47,26 @@ const registerUser = asyncHandler( async (req, res) => {
             throw new ApiError(410, "User with this email or username already exists")
         }
 
-        const avatarLocalPath = req.files?.avatar[0]?.path;
-        const coverIamgeLocalPath = req.files?.coverImage[0]?.path;
+        const avatarFiles = req.files?.avatar;
 
-        if(!avatarLocalPath)
+        const coverImageFiles = req.files?.coverImage;
+        // console.log((req.files))
+        // console.table(req.files)
+        const avatarLocalPath = avatarFiles && avatarFiles.length > 0 ? avatarFiles[0].path : undefined;
+        // const coverImageLocalPath = coverImageFiles && coverImageFiles.length > 0 ? coverImageFiles[0].path : undefined;
+
+        let coverImageLocalPath;
+        if( req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0)
             {
-                throw new ApiError(404, "Avatar file is required")
+                coverImageLocalPath = req.files.coverImage[0].path
             }
+        
+        if (!avatarLocalPath) {
+          throw new ApiError(404, "Avatar file is required");
+        }
 
         const avatar = await uploadOnCloudinary(avatarLocalPath)
-        const coverImage = await uploadOnCloudinary(coverIamgeLocalPath)
+        const coverImage = await uploadOnCloudinary(coverImageLocalPath)
         
         if(!avatar)
             {
@@ -65,7 +76,7 @@ const registerUser = asyncHandler( async (req, res) => {
         const user = await User.create({
             fullname, 
             avatar: avatar.url,
-            coverImage: coverImage.url,
+            coverImage: coverImage ? coverImage.url: null,
             email,
             password,
             username: username.toLowerCase()
@@ -80,8 +91,10 @@ const registerUser = asyncHandler( async (req, res) => {
         }
 
         return res.status(201).json(
-            new ApiResponse(200, 'createduser', "User registered Successfully")
+            new ApiResponse(201, createdUser, "User registered Successfully")
         )
+
+        // return res.status(205).json({createdUser})
 })
 
 
